@@ -9,6 +9,7 @@
     <title>JSP 模板</title>
     <h1>修改</h1>
     <form action="${pageContext.request.contextPath}/user/update1" method="post">
+        <input type="hidden" name="id" value="${user.id}">
         用户名：
         <input type="text" name="username" value="${user.username}">
         年龄：
