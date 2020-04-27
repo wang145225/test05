@@ -1,0 +1,48 @@
+#mybatis puls 配置
+mybatis-plus:
+  type-aliases-package: cn.jiyun.pojo  #给实体取别名
+  typeAliasesPackage : cn.jiyun.mapper #扫面mapper层
+  mapper-locations : classpath:mappers/*.xml  #自定义mapper.xml文件位置
+  global-config:
+    db-config:
+      id-type: auto  #声明主键自增配置
+      logic-delete-value : 0 #逻辑删除
+  configuration:
+    map-underscore-to-camel-case: true  #是否关闭驼峰到下划线的映射
+    cache-enabled : false  #是否开启二级缓存
+    log-impl : org.apache.ibatis.logging.stdout.StdOutImpl  #打印sql语句
+server:
+  servlet:
+    context-path: /demo  #重定义访问项目名称
+  port: 8080   #重定义访问项目端口
+  tomcat:
+    uri-encoding: UTF-8 #tomcat编码格式
+  init-parameters:
+    development: true  #开启jsp页面的热部署
+
+
+  #热部署
+spring:
+  devtools:
+    restart:
+      enabled: true  # true 热部署生效
+      additional-exclude: src/main/java,static/**,mappers/**  #设置重启的目录
+      exclude: templates/**  #排除无需重启的目录，多个目录可以用英文逗号隔开
+  freemarker:
+    cache: false  #关闭缓存
+
+  #数据库链接
+  datasource:
+    url: jdbc:mysql://localhost:3306/test03?serverTimezone=UTC
+    username: root
+    password: 123
+  http:
+    encoding:
+      charset: utf-8  #设置编码格式
+      enabled: true
+      force: true
+  mvc:
+    view:
+      prefix: /
+      suffix: .jsp
+
